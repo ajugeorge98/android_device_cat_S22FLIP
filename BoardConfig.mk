@@ -101,3 +101,16 @@ TW_MAX_BRIGHTNESS := 255
 # TW_INCLUDE_NTFS_3G := true
 # TW_NO_EXFAT_FUSE := true
 # TW_EXCLUDE_APEX := true
+# add an option in reboot menu to reboot into Download Mode
+TW_HAS_DOWNLOAD_MODE := true
+# system won't be unmounted,
+TW_NEVER_UNMOUNT_SYSTEM := true# add support for encryption
+TW_INCLUDE_CRYPTO := true
+# Add EXT4 support
+TARGET_USERIMAGES_USE_EXT4 := true
+# Disable/enable SELinux. Only suggested when you want to enable SELinux support
+TWHAVE_SELINUX := true
+# Remove MTP support
+TW_EXCLUDE_MTP := true
+# include Logcat daemon for help in debugging
+TWRP_INCLUDE_LOGCAT := true
