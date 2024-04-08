@@ -111,6 +111,6 @@ TARGET_USERIMAGES_USE_EXT4 := true
 # Disable/enable SELinux. Only suggested when you want to enable SELinux support
 TWHAVE_SELINUX := true
 # Remove MTP support
-TW_EXCLUDE_MTP := true
+# TW_EXCLUDE_MTP := true
 # include Logcat daemon for help in debugging
 TWRP_INCLUDE_LOGCAT := true
