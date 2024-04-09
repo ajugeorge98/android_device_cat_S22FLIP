@@ -1,73 +1,75 @@
-# Userdata
-/data             ext4     /dev/block/mmcblk0p56                      wait,check,encryptable=footer
+# Copyright (c) 2017,2019 The Linux Foundation. All rights reserved.
+#
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions are
+# met:
+#     * Redistributions of source code must retain the above copyright
+#       notice, this list of conditions and the following disclaimer.
+#     * Redistributions in binary form must reproduce the above
+#       copyright notice, this list of conditions and the following
+#       disclaimer in the documentation and/or other materials provided
+#       with the distribution.
+#     * Neither the name of The Linux Foundation nor the names of its
+#       contributors may be used to endorse or promote products derived
+#       from this software without specific prior written permission.
+#
+# THIS SOFTWARE IS PROVIDED "AS IS" AND ANY EXPRESS OR IMPLIED
+# WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+# MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT
+# ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS
+# BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+# CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+# SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR
+# BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+# WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
+# OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
+# IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-# Cache
-/cache            ext4     /dev/block/mmcblk0p41                      flags=backup=1;wipeingui;wipeduringfactoryreset   
+# Vendor variant of recovery.fstab. Same as recovery.fstab, with additional vendor entry.
 
-# System
-system            ext4     /system             ro,barrier=1           wait,avb=vbmeta_system,logical,first_stage_mount
-product           ext4     /product            ro,barrier=1,discard   wait,avb=vbmeta_system,logical,first_stage_mount
-vendor            ext4     /vendor             ro,barrier=1           wait,avb,logical,first_stage_mount
+#device         mount point      fstype        [device2] [length=]
 
+system                                     /system         ext4    ro,barrier=1                                                    wait,avb=vbmeta_system,logical,first_stage_mount
+/dev/block/bootdevice/by-name/cache        /cache          ext4    noatime,nosuid,nodev,barrier=1,data=ordered                     wait,check
+vendor                                     /vendor         ext4    ro,barrier=1                                                    wait,avb,logical,first_stage_mount
+#add start: 20210208, add product partition due to make ota fail
+product                                    /product        ext4    ro,barrier=1,discard                                            wait,avb=vbmeta_system,logical,first_stage_mount
+#add end 20210208
 /dev/block/bootdevice/by-name/metadata     /metadata       ext4    noatime,nosuid,nodev,discard                                    wait,check,formattable,first_stage_mount
-# /dev/block/bootdevice/by-name/userdata     /data           f2fs    noatime,nosuid,nodev,discard                                    
-
-# /dev/block/bootdevice/by-name/boot         /boot           emmc    defaults                                                        defaults
-# /dev/block/bootdevice/by-name/recovery     /recovery       emmc    defaults                                                        defaults
-# /dev/block/bootdevice/by-name/misc         /misc           emmc    defaults                                                        defaults
-# add start: 20210506, YansongPeng add for close diag port after factory reset.
-# /dev/block/bootdevice/by-name/carrier    /carrier          ext4    defaults                                                        defaults
-# add end: 20210506.
-
-
-# Boot-Aboot-Recovery
-/boot             emmc     /dev/block/mmcblk0p51                      flags=backup=1;flashimg=1;display="Boot"
-/recovery         emmc     /dev/block/mmcblk0p52                      flags=backup=1;flashimg=1;display="Recovery"
-/aboot            emmc     /dev/block/mmcblk0p43                      flags=display="Bootloader";backup=1;flashimg=1
-/abootbak         emmc     /dev/block/mmcblk0p44                      flags=display="Bootloader Backup";backup=1;flashimg=1
-
-# Modem
-/firmware         vfat     /dev/block/mmcblk0p1                       flags=display="Firmware(Modem)"
-/firmware_image   emmc     /dev/block/mmcblk0p1                       flags=display="Firmware(Modem) Image";flashimg=1;backup=1
-
-# Persist
-/persist          ext4     /dev/block/mmcblk0p26                      flags=display="Persist";backup=1
-/persist_image    emmc     /dev/block/mmcblk0p26					  flags=display="Persist Image";flashimg=1
-# /persistbak       ext4     /dev/block/bootdevice/by-name/persistbak   flags=display="Persist Backup";backup=1
-# /persistbak_image emmc     /dev/block/bootdevice/by-name/persistbak   flags=display="Persist Backup";flashimg=1
-
-# EFS
-# /efs1             emmc     /dev/block/bootdevice/by-name/modemst1     flags=backup=1;display="efs1"
-# /efs2             emmc     /dev/block/bootdevice/by-name/modemst2     flags=backup=1;subpartitionof=/efs1;display="efs2"
-
-
-# Misc
-/dsp              ext4     /dev/block/mmcblk0p23                      flags=display="dsp";backup=1
-/dsp_image        emmc     /dev/block/mmcblk0p23                      flags=display="dsp";flashimg=1
-# /cust             ext4     /dev/block/bootdevice/by-name/cust         flags=display="cust";backup=1
-# /cust_image       emmc     /dev/block/bootdevice/by-name/cust         flags=display="cust";flashimg=1
-/splash           emmc     /dev/block/mmcblk0p39                      flags=display="splash";backup=1;flashimg=1
-# /sbl1             emmc     /dev/block/bootdevice/by-name/sbl1         flags=display="sbl1";backup=1;flashimg=1
-/rpm              emmc     /dev/block/mmcblk0p17                      flags=display="rpm";backup=1;flashimg=1
-/tz               emmc     /dev/block/mmcblk0p19                      flags=display="tz";backup=1;flashimg=1
-/vbmeta           emmc     /dev/block/mmcblk0p47                      flags=display="vbmeta";backup=1;flashimg=1
-/misc             emmc     /dev/block/mmcblk0p27
-/keystore         emmc     /dev/block/mmcblk0p28
-/ssd              emmc     /dev/block/mmcblk0p14
-# /DDR              emmc     /dev/block/bootdevice/by-name/DDR
-/devinfo          emmc     /dev/block/mmcblk0p11                      flags=display="devinfo";backup=1;flashimg=1
-/fsc              emmc     /dev/block/mmcblk0p13
-/sec              emmc     /dev/block/mmcblk0p4
-/fsg              emmc     /dev/block/mmcblk0p3                       flags=display="fsg";backup=1
-/msadp            emmc     /dev/block/mmcblk0p37                      flags=display="msadp";backup=1;flashimg=1
-/apdp             emmc     /dev/block/mmcblk0p36                      flags=display="apdp";backup=1;flashimg=1
-/cmnlib64         emmc     /dev/block/mmcblk0p7                       flags=display="cmnlib64";backup=1;flashimg=1
-/cmnlib           emmc     /dev/block/mmcblk0p5                       flags=display="cmnlib";backup=1;flashimg=1
-/keymaster        emmc     /dev/block/mmcblk0p9                       flags=display="keymaster";backup=1;flashimg=1
-/devcfg           emmc     /dev/block/mmcblk0p21                      flags=display="devcfg";backup=1;flashimg=1
-/mdtp             emmc     /dev/block/mmcblk0p33                      flags=display="mdtp";backup=1;flashimg=1
-/dtbo             emmc     /dev/block/mmcblk0p45                      flags=display="dtbo";backup=1;flashimg=1
-
+/dev/block/bootdevice/by-name/userdata     /data           f2fs    noatime,nosuid,nodev,discard                                    wait,check,encryptable=footer
+/dev/block/mmcblk1p1                       /sdcard         vfat    nosuid,nodev                                                    wait
+/dev/block/bootdevice/by-name/boot         /boot           emmc    defaults                                                        defaults
+/dev/block/bootdevice/by-name/recovery     /recovery       emmc    defaults                                                        defaults
+/dev/block/bootdevice/by-name/aboot        /aboot          emmc    defaults                                                        defaults
+/dev/block/bootdevice/by-name/abootbak     /abootbak       emmc    defaults                                                        defaults
+/dev/block/mmcblk0p1     				   /firmware       emmc    defaults                                                        flags=display="Firmware(Modem) Image";flashimg=1;backup=1
+/dev/block/mmcblk0p26    				   /persist        emmc    defaults                                                        flags=display="Persist Image";flashimg=1
+/dev/block/mmcblk0p23     				   /dsp  	       emmc    defaults                                                        flags=display="dsp";flashimg=1
+/dev/block/mmcblk0p39     				   /splash         emmc    defaults                                                        flags=display="splash";backup=1;flashimg=1
+/dev/block/mmcblk0p17    				   /rpm            emmc    defaults                                                        flags=display="rpm";backup=1;flashimg=1
+/dev/block/mmcblk0p19    				   /tz             emmc    defaults                                                        flags=display="tz";backup=1;flashimg=1
+/dev/block/mmcblk0p47   				   /vbmeta         emmc    defaults                                                        flags=display="vbmeta";backup=1;flashimg=1
+/dev/block/mmcblk0p27  					   /misc    	   emmc    defaults                                                        defaults
+/dev/block/mmcblk0p28    				   /keystore       emmc    defaults                                                        defaults
+/dev/block/mmcblk0p14   				   /ssd     	   emmc    defaults                                                        defaults
+/dev/block/mmcblk0p11   				   /devinfo        emmc    defaults                                                        flags=display="devinfo";backup=1;flashimg=1
+/dev/block/mmcblk0p13    				   /fsc   	       emmc    defaults                                                        defaults
+/dev/block/mmcblk0p4    				   /sec            emmc    defaults                                                        defaults
+/dev/block/mmcblk0p3 				       /fsg            emmc    defaults                                                        flags=display="fsg";backup=1
+/dev/block/mmcblk0p37   				   /msadp          emmc    defaults                                                        flags=display="msadp";backup=1;flashimg=1
+/dev/block/mmcblk0p36   				   /apdp           emmc    defaults                                                      flags=display="apdp";backup=1;flashimg=1
+/dev/block/mmcblk0p7   					   /cmnlib64       emmc    defaults                                                   flags=display="cmnlib64";backup=1;flashimg=1   
+/dev/block/mmcblk0p5   					   /cmnlib         emmc    defaults                                                  flags=display="cmnlib";backup=1;flashimg=1
+/dev/block/mmcblk0p9   					   /keymaster      emmc    defaults                                                        flags=display="keymaster";backup=1;flashimg=1
+/dev/block/mmcblk0p21    				   /devcfg         emmc    defaults                                                        flags=display="devcfg";backup=1;flashimg=1
+/dev/block/mmcblk0p33    				   /mdtp  	       emmc    defaults                                                        flags=display="mdtp";backup=1;flashimg=1
+/dev/block/mmcblk0p45   				   /dtbo     	   emmc    defaults                                                        flags=display="dtbo";backup=1;flashimg=1
 # Removable storage
-/usb-otg          auto     /dev/block/sda1         /dev/block/sda     flags=display="USB OTG";storage;removable;wipeingui
-/external_sd      auto     /dev/block/mmcblk1p1                       flags=display="External SD";storage;removable;wipeingui
+/dev/block/sda1     /dev/block/sda	    	/usb-otg       auto    defaults                                                        flags=display="USB OTG";storage;removable;wipeingui
+/dev/block/mmcblk1p1                       /external_sd    auto    defaults                                                        flags=display="External SD";storage;removable;wipeingui
+
+
+/dev/block/bootdevice/by-name/misc         /misc           emmc    defaults                                                        defaults
+# add start: 20210506, YansongPeng add for close diag port after factory reset.
+/dev/block/bootdevice/by-name/carrier    /carrier          ext4    defaults                                                        defaults
+# add end: 20210506.
