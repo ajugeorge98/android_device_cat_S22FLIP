@@ -1,0 +1,65 @@
+# Userdata
+/data             ext4     /dev/block/mmcblk0p56                      flags=fileencryption=ice:aes-256-cts;backup=1;wipeingui
+
+# Cache
+/cache            ext4     /dev/block/mmcblk0p41                      flags=backup=1;wipeingui;wipeduringfactoryreset
+
+# System
+/system           ext4     /dev/block/dm-0                            flags=backup=1;wipeingui;display="System"
+/system_image     emmc     /dev/block/dm-0                            flags=backup=1;flashimg=1;display="System Image"
+
+# Boot-Aboot-Recovery
+/boot             emmc     /dev/block/mmcblk0p51                      flags=backup=1;flashimg=1;display="Boot"
+/recovery         emmc     /dev/block/mmcblk0p52                      flags=backup=1;flashimg=1;display="Recovery"
+/aboot            emmc     /dev/block/mmcblk0p43                      flags=display="Bootloader";backup=1;flashimg=1
+/abootbak         emmc     /dev/block/mmcblk0p44                      flags=display="Bootloader Backup";backup=1;flashimg=1
+
+# Vendor
+/vendor           ext4     /dev/block/dm-1                            flags=display="Vendor";backup=1;wipeingui
+/vendor_image     emmc     /dev/block/dm-1                            flags=display="Vendor Image";flashimg=1;backup=1
+
+# Modem
+/firmware         vfat     /dev/block/mmcblk0p1                       flags=display="Firmware(Modem)"
+/firmware_image   emmc     /dev/block/mmcblk0p1                       flags=display="Firmware(Modem) Image";flashimg=1;backup=1
+
+# Persist
+/persist          ext4     /dev/block/mmcblk0p26                      flags=display="Persist";backup=1
+/persist_image    emmc     /dev/block/mmcblk0p26					  flags=display="Persist Image";flashimg=1
+/persistbak       ext4     /dev/block/bootdevice/by-name/persistbak   flags=display="Persist Backup";backup=1
+/persistbak_image emmc     /dev/block/bootdevice/by-name/persistbak   flags=display="Persist Backup";flashimg=1
+
+# EFS
+/efs1             emmc     /dev/block/bootdevice/by-name/modemst1     flags=backup=1;display="efs1"
+/efs2             emmc     /dev/block/bootdevice/by-name/modemst2     flags=backup=1;subpartitionof=/efs1;display="efs2"
+
+
+# Misc
+/dsp              ext4     /dev/block/mmcblk0p23                      flags=display="dsp";backup=1
+/dsp_image        emmc     /dev/block/mmcblk0p23                      flags=display="dsp";flashimg=1
+/cust             ext4     /dev/block/bootdevice/by-name/cust         flags=display="cust";backup=1
+/cust_image       emmc     /dev/block/bootdevice/by-name/cust         flags=display="cust";flashimg=1
+/splash           emmc     /dev/block/mmcblk0p39                      flags=display="splash";backup=1;flashimg=1
+/sbl1             emmc     /dev/block/bootdevice/by-name/sbl1         flags=display="sbl1";backup=1;flashimg=1
+/rpm              emmc     /dev/block/mmcblk0p17                      flags=display="rpm";backup=1;flashimg=1
+/tz               emmc     /dev/block/mmcblk0p19                      flags=display="tz";backup=1;flashimg=1
+/vbmeta           emmc     /dev/block/mmcblk0p47                      flags=display="vbmeta";backup=1;flashimg=1
+/misc             emmc     /dev/block/mmcblk0p27
+/keystore         emmc     /dev/block/mmcblk0p28
+/ssd              emmc     /dev/block/mmcblk0p14
+/DDR              emmc     /dev/block/bootdevice/by-name/DDR
+/devinfo          emmc     /dev/block/mmcblk0p11                      flags=display="devinfo";backup=1;flashimg=1
+/fsc              emmc     /dev/block/mmcblk0p13
+/sec              emmc     /dev/block/mmcblk0p4
+/fsg              emmc     /dev/block/mmcblk0p3                       flags=display="fsg";backup=1
+/msadp            emmc     /dev/block/mmcblk0p37                      flags=display="msadp";backup=1;flashimg=1
+/apdp             emmc     /dev/block/mmcblk0p36                      flags=display="apdp";backup=1;flashimg=1
+/cmnlib64         emmc     /dev/block/mmcblk0p7                       flags=display="cmnlib64";backup=1;flashimg=1
+/cmnlib           emmc     /dev/block/mmcblk0p5                       flags=display="cmnlib";backup=1;flashimg=1
+/keymaster        emmc     /dev/block/mmcblk0p9                       flags=display="keymaster";backup=1;flashimg=1
+/devcfg           emmc     /dev/block/mmcblk0p21                      flags=display="devcfg";backup=1;flashimg=1
+/mdtp             emmc     /dev/block/mmcblk0p33                      flags=display="mdtp";backup=1;flashimg=1
+/dtbo             emmc     /dev/block/mmcblk0p45                      flags=display="dtbo";backup=1;flashimg=1
+
+# Removable storage
+/usb-otg          auto     /dev/block/sda1         /dev/block/sda     flags=display="USB OTG";storage;removable;wipeingui
+/external_sd      auto     /dev/block/mmcblk1p1                       flags=display="External SD";storage;removable;wipeingui
