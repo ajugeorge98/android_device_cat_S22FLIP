@@ -2,12 +2,11 @@
 /data             ext4     /dev/block/mmcblk0p56                      flags=fileencryption=ice:aes-256-cts;backup=1;wipeingui
 
 # Cache
-/cache            ext4     /dev/block/mmcblk0p41                      flags=backup=1;wipeingui;wipeduringfactoryreset
+/cache            ext4     /dev/block/mmcblk0p41                      flags=backup=1;wipeingui;wipeduringfactoryreset   
 
 # System
-/system           ext4     /dev/block/dm-0                            flags=backup=1;wipeingui;display="System"
-/system_image     emmc     /dev/block/dm-0                            flags=backup=1;flashimg=1;display="System Image"
-
+system            ext4     /system             ro,barrier=1           wait,avb=vbmeta_system,logical,first_stage_mount
+product           ext4     /product            ro,barrier=1,discard   wait,avb=vbmeta_system,logical,first_stage_mount
 # Boot-Aboot-Recovery
 /boot             emmc     /dev/block/mmcblk0p51                      flags=backup=1;flashimg=1;display="Boot"
 /recovery         emmc     /dev/block/mmcblk0p52                      flags=backup=1;flashimg=1;display="Recovery"
@@ -25,28 +24,28 @@
 # Persist
 /persist          ext4     /dev/block/mmcblk0p26                      flags=display="Persist";backup=1
 /persist_image    emmc     /dev/block/mmcblk0p26					  flags=display="Persist Image";flashimg=1
-/persistbak       ext4     /dev/block/bootdevice/by-name/persistbak   flags=display="Persist Backup";backup=1
-/persistbak_image emmc     /dev/block/bootdevice/by-name/persistbak   flags=display="Persist Backup";flashimg=1
+# /persistbak       ext4     /dev/block/bootdevice/by-name/persistbak   flags=display="Persist Backup";backup=1
+# /persistbak_image emmc     /dev/block/bootdevice/by-name/persistbak   flags=display="Persist Backup";flashimg=1
 
 # EFS
-/efs1             emmc     /dev/block/bootdevice/by-name/modemst1     flags=backup=1;display="efs1"
-/efs2             emmc     /dev/block/bootdevice/by-name/modemst2     flags=backup=1;subpartitionof=/efs1;display="efs2"
+# /efs1             emmc     /dev/block/bootdevice/by-name/modemst1     flags=backup=1;display="efs1"
+# /efs2             emmc     /dev/block/bootdevice/by-name/modemst2     flags=backup=1;subpartitionof=/efs1;display="efs2"
 
 
 # Misc
 /dsp              ext4     /dev/block/mmcblk0p23                      flags=display="dsp";backup=1
 /dsp_image        emmc     /dev/block/mmcblk0p23                      flags=display="dsp";flashimg=1
-/cust             ext4     /dev/block/bootdevice/by-name/cust         flags=display="cust";backup=1
-/cust_image       emmc     /dev/block/bootdevice/by-name/cust         flags=display="cust";flashimg=1
+# /cust             ext4     /dev/block/bootdevice/by-name/cust         flags=display="cust";backup=1
+# /cust_image       emmc     /dev/block/bootdevice/by-name/cust         flags=display="cust";flashimg=1
 /splash           emmc     /dev/block/mmcblk0p39                      flags=display="splash";backup=1;flashimg=1
-/sbl1             emmc     /dev/block/bootdevice/by-name/sbl1         flags=display="sbl1";backup=1;flashimg=1
+# /sbl1             emmc     /dev/block/bootdevice/by-name/sbl1         flags=display="sbl1";backup=1;flashimg=1
 /rpm              emmc     /dev/block/mmcblk0p17                      flags=display="rpm";backup=1;flashimg=1
 /tz               emmc     /dev/block/mmcblk0p19                      flags=display="tz";backup=1;flashimg=1
 /vbmeta           emmc     /dev/block/mmcblk0p47                      flags=display="vbmeta";backup=1;flashimg=1
 /misc             emmc     /dev/block/mmcblk0p27
 /keystore         emmc     /dev/block/mmcblk0p28
 /ssd              emmc     /dev/block/mmcblk0p14
-/DDR              emmc     /dev/block/bootdevice/by-name/DDR
+# /DDR              emmc     /dev/block/bootdevice/by-name/DDR
 /devinfo          emmc     /dev/block/mmcblk0p11                      flags=display="devinfo";backup=1;flashimg=1
 /fsc              emmc     /dev/block/mmcblk0p13
 /sec              emmc     /dev/block/mmcblk0p4
