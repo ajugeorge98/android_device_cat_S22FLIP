@@ -101,7 +101,7 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
 
         #Maintainer Stuff
         export OF_MAINTAINER="ajugeorge"
-        export FOX_VERSION="R11.1_0"
+        export FOX_MAINTAINER_PATCH_VERSION="5"
 
 	    # run a process after formatting data to work-around MTP issues
 	    export OF_RUN_POST_FORMAT_PROCESS="1"
