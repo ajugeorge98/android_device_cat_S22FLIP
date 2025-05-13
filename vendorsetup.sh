@@ -73,11 +73,11 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
             export FOX_QUICK_BACKUP_LIST="/boot;/data;"
 
 	    # screen settings
-	    export FOX_SCREEN_H=2400
-	    export FOX_STATUS_H=100
-	    export FOX_STATUS_INDENT_LEFT=48
-	    export FOX_STATUS_INDENT_RIGHT=48
-	    export FOX_CLOCK_POS="1"
+	    # export FOX_SCREEN_H=2400
+	    # export FOX_STATUS_H=100
+	    # export FOX_STATUS_INDENT_LEFT=48
+	    # export FOX_STATUS_INDENT_RIGHT=48
+	    # export FOX_CLOCK_POS="1"
 
 	    #Partitions
             export FOX_RECOVERY_SYSTEM_PARTITION="/dev/block/mapper/system"
