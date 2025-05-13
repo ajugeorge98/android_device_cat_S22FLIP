@@ -92,7 +92,7 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
 	    #Partitions
         export FOX_RECOVERY_SYSTEM_PARTITION="/dev/block/mapper/system"
 	    export FOX_RECOVERY_VENDOR_PARTITION="/dev/block/mapper/vendor"
-	    export OF_VIRTUAL_AB_DEVICE="1"
+	    export FOX_VIRTUAL_AB_DEVICE=1
 
         #Features
         export FOX_ENABLE_APP_MANAGER=0
