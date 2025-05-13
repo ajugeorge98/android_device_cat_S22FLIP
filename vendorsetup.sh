@@ -40,23 +40,23 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
 
    	    #Building
 	    export LC_ALL="C"
-        export FOX_MANIFEST_VER="11.0"
+            export FOX_MANIFEST_VER="11.0"
  	    export ALLOW_MISSING_DEPENDENCIES=true
 	    export OF_TARGET_DEVICES="S22FLIP"
 	    export TARGET_DEVICE_ALT="S22FLIP"
 	    export FOX_USE_TWRP_RECOVERY_IMAGE_BUILDER="1"
 
         #Debug
-        export FOX_INSTALLER_DEBUG_MODE="1"
-        export OF_IGNORE_LOGICAL_MOUNT_ERRORS="1"
+           export FOX_INSTALLER_DEBUG_MODE="1"
+           export OF_IGNORE_LOGICAL_MOUNT_ERRORS="1"
 
         #Binaries
-        export FOX_USE_SED_BINARY="1"
+            export FOX_USE_SED_BINARY="1"
 	    export FOX_USE_XZ_UTILS="1"
 	    export FOX_USE_GREP_BINARY="1"
 	    export FOX_USE_BASH_SHELL="1"
 	    export FOX_ASH_IS_BASH="1"
-        export FOX_USE_TAR_BINARY="1"
+            export FOX_USE_TAR_BINARY="1"
 	    export FOX_USE_NANO_EDITOR="1"
 
 	    #Magiskboot
@@ -80,7 +80,7 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
 	    export OF_CLOCK_POS="1"
 
 	    #Partitions
-        export FOX_RECOVERY_SYSTEM_PARTITION="/dev/block/mapper/system"
+            export FOX_RECOVERY_SYSTEM_PARTITION="/dev/block/mapper/system"
 	    export FOX_RECOVERY_VENDOR_PARTITION="/dev/block/mapper/vendor"
 	    export FOX_VIRTUAL_AB_DEVICE=1
 
