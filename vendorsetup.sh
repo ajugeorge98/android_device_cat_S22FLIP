@@ -42,13 +42,13 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
 	    export LC_ALL="C"
             export FOX_MANIFEST_VER="11.0"
  	    export ALLOW_MISSING_DEPENDENCIES=true
-	    export OF_TARGET_DEVICES="S22FLIP"
+	    export FOX_TARGET_DEVICES="S22FLIP"
 	    export TARGET_DEVICE_ALT="S22FLIP"
 	    export FOX_USE_TWRP_RECOVERY_IMAGE_BUILDER="1"
 
         #Debug
            export FOX_INSTALLER_DEBUG_MODE="1"
-           export OF_IGNORE_LOGICAL_MOUNT_ERRORS="1"
+           export FOX_IGNORE_LOGICAL_MOUNT_ERRORS="1"
 
         #Binaries
             export FOX_USE_SED_BINARY="1"
@@ -60,8 +60,8 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
 	    export FOX_USE_NANO_EDITOR="1"
 
 	    #Magiskboot
-	    export OF_USE_MAGISKBOOT="1"
-	    export OF_USE_MAGISKBOOT_FOR_ALL_PATCHES="1"
+	    export FOX_USE_MAGISKBOOT="1"
+	    export FOX_USE_MAGISKBOOT_FOR_ALL_PATCHES="1"
 	    export FOX_PATCH_VBMETA_FLAG=1
 
 	    #Magisk
@@ -69,15 +69,15 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
 
 
 	    #Backup
-            export OF_SKIP_MULTIUSER_FOLDERS_BACKUP="1"
-            export OF_QUICK_BACKUP_LIST="/boot;/data;"
+            export FOX_SKIP_MULTIUSER_FOLDERS_BACKUP="1"
+            export FOX_QUICK_BACKUP_LIST="/boot;/data;"
 
 	    # screen settings
-	    export OF_SCREEN_H=2400
-	    export OF_STATUS_H=100
-	    export OF_STATUS_INDENT_LEFT=48
-	    export OF_STATUS_INDENT_RIGHT=48
-	    export OF_CLOCK_POS="1"
+	    export FOX_SCREEN_H=2400
+	    export FOX_STATUS_H=100
+	    export FOX_STATUS_INDENT_LEFT=48
+	    export FOX_STATUS_INDENT_RIGHT=48
+	    export FOX_CLOCK_POS="1"
 
 	    #Partitions
             export FOX_RECOVERY_SYSTEM_PARTITION="/dev/block/mapper/system"
@@ -87,14 +87,14 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
         #Features
         export FOX_ENABLE_APP_MANAGER=0
         export FOX_DELETE_AROMAFM="1"
-        export OF_USE_GREEN_LED="0"
+        export FOX_USE_GREEN_LED="0"
 
         #Maintainer Stuff
-        export OF_MAINTAINER="ajugeorge"
+        export FOX_MAINTAINER="ajugeorge"
         export FOX_MAINTAINER_PATCH_VERSION="5"
 
 	    # run a process after formatting data to work-around MTP issues
-	    export OF_RUN_POST_FORMAT_PROCESS="1"
+	    export FOX_RUN_POST_FORMAT_PROCESS="1"
 
 	# let's see what are our build VARs
 	if [ -n "$FOX_BUILD_LOG_FILE" -a -f "$FOX_BUILD_LOG_FILE" ]; then
