@@ -67,20 +67,10 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
 	    #Magisk
 	    export FOX_USE_SPECIFIC_MAGISK_ZIP="/home/pranav/Magisk/Magisk-v24.3.zip"
 
-        # OTA & MIUI
-        export OF_KEEP_DM_VERITY="1"
-        export OF_SUPPORT_ALL_BLOCK_OTA_UPDATES="1"
-        export OF_FIX_OTA_UPDATE_MANUAL_FLASH_ERROR="1"
-        export OF_DISABLE_MIUI_OTA_BY_DEFAULT="1"
-        export OF_NO_MIUI_PATCH_WARNING="1"
-        export OF_DONT_PATCH_ENCRYPTED_DEVICE="1"
-        export OF_NO_TREBLE_COMPATIBILITY_CHECK="1"
-        export OF_PATCH_AVB20="1"
-        export FOX_BUGGED_AOSP_ARB_WORKAROUND="1616300800"
 
-        #Backup
-        export OF_SKIP_MULTIUSER_FOLDERS_BACKUP="1"
-        export OF_QUICK_BACKUP_LIST="/boot;/data;"
+	    #Backup
+            export OF_SKIP_MULTIUSER_FOLDERS_BACKUP="1"
+            export OF_QUICK_BACKUP_LIST="/boot;/data;"
 
 	    # screen settings
 	    export OF_SCREEN_H=2400
