@@ -4,6 +4,10 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 #
+# Ensure clean ramdisk creation
+LOCAL_POST_INSTALL_CMD := \
+    $(hide) rm -rf $(TARGET_RECOVERY_ROOT_OUT)/etc && \
+    mkdir -p $(TARGET_RECOVERY_ROOT_OUT)/etc
 
 PRODUCT_MAKEFILES := \
     $(LOCAL_DIR)/twrp_S22FLIP.mk

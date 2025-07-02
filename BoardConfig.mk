@@ -114,3 +114,17 @@ TWHAVE_SELINUX := true
 # TW_EXCLUDE_MTP := true
 # include Logcat daemon for help in debugging
 TWRP_INCLUDE_LOGCAT := true
+
+# For SHRP/TWRP recovery image building
+TARGET_RECOVERY_FSTAB := device/cat/S22FLIP/recovery.fstab
+TARGET_NO_RECOVERY := false
+BOARD_USES_RECOVERY_AS_BOOT := false
+BOARD_BUILD_SYSTEM_ROOT_IMAGE := false
+BOARD_MOVE_RECOVERY_RESOURCES_TO_VENDOR_BOOT := false
+
+# Set executable permissions for sbin files
+TW_RECOVERY_ADDITIONAL_RELINK_FILES := \
+    $(TARGET_RECOVERY_ROOT_OUT)/sbin/mkfs.ext4 \
+    $(TARGET_RECOVERY_ROOT_OUT)/sbin/parted
+
+TW_RECOVERY_ADDITIONAL_RELINK_BINARY_FILES := true

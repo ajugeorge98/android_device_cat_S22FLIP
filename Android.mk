@@ -10,3 +10,8 @@ LOCAL_PATH := $(call my-dir)
 ifeq ($(TARGET_DEVICE),S22FLIP)
 include $(call all-subdir-makefiles,$(LOCAL_PATH))
 endif
+
+# Add this to your device tree's build configuration
+LOCAL_POST_INSTALL_CMD := \
+    $(hide) rm -rf $(TARGET_RECOVERY_ROOT_OUT)/etc && \
+    mkdir -p $(TARGET_RECOVERY_ROOT_OUT)/etc
