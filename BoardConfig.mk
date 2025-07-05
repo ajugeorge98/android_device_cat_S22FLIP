@@ -115,16 +115,25 @@ TWHAVE_SELINUX := true
 # include Logcat daemon for help in debugging
 TWRP_INCLUDE_LOGCAT := true
 
-# For SHRP/TWRP recovery image building
-TARGET_RECOVERY_FSTAB := device/cat/S22FLIP/recovery.fstab
-TARGET_NO_RECOVERY := false
-BOARD_USES_RECOVERY_AS_BOOT := false
-BOARD_BUILD_SYSTEM_ROOT_IMAGE := false
-BOARD_MOVE_RECOVERY_RESOURCES_TO_VENDOR_BOOT := false
+# Enable flashable partitions
+TW_INCLUDE_FB2PNG := true
+TW_INCLUDE_REPACKTOOLS := true
+TW_INCLUDE_RESETPROP := true
+TW_USE_TOOLBOX := true
 
-# Set executable permissions for sbin files
-TW_RECOVERY_ADDITIONAL_RELINK_FILES := \
-    $(TARGET_RECOVERY_ROOT_OUT)/sbin/mkfs.ext4 \
-    $(TARGET_RECOVERY_ROOT_OUT)/sbin/parted
+# Enable additional features
+TW_EXTRA_LANGUAGES := true
+TW_INCLUDE_NTFS_3G := true
+TW_INCLUDE_FUSE_EXFAT := true
 
-TW_RECOVERY_ADDITIONAL_RELINK_BINARY_FILES := true
+# Completely disable system versions
+TW_EXCLUDE_SYSTEM_PARTED := true
+TW_EXCLUDE_SYSTEM_MKFS := true
+
+# Enable our custom versions
+TW_INCLUDE_CUSTOM_PARTED := true
+TW_INCLUDE_CUSTOM_MKFS := true
+
+# Prevent any system overrides
+TW_NO_SYSTEM_PARTED := true
+TW_NO_SYSTEM_MKFS := true

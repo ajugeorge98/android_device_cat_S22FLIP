@@ -30,6 +30,8 @@ PRODUCT_MANUFACTURER := cat
 
 # Copy prebuilt binaries to recovery sbin
 PRODUCT_COPY_FILES += \
+    device/cat/S22FLIP/prebuilt/sbin/repartition.sh:recovery/root/sbin/repartition.sh \
+    device/cat/S22FLIP/prebuilt/sbin/restorepart.sh:recovery/root/sbin/restorepart.sh \
     device/cat/S22FLIP/prebuilt/sbin/mkfs.ext4:recovery/root/sbin/mkfs.ext4 \
     device/cat/S22FLIP/prebuilt/sbin/parted:recovery/root/sbin/parted
 
