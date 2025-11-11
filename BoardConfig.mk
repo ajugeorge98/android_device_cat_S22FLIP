@@ -114,3 +114,14 @@ TWHAVE_SELINUX := true
 # TW_EXCLUDE_MTP := true
 # include Logcat daemon for help in debugging
 TWRP_INCLUDE_LOGCAT := true
+
+
+# Enable TWRP crypto support (fscrypt / FBE helpers)
+TW_INCLUDE_CRYPTO := true
+TW_INCLUDE_FBE := true
+
+# Support dynamic/logical partitions (Android 10/11 style)
+TW_USE_DYNAMIC_PARTITIONS := true
+
+# Keep SELinux support present in recovery (perm/permissive handled at runtime)
+TW_KERNEL_SUPPORT_SELINUX := true
